@@ -6,20 +6,24 @@
 <template>
   <div class="container">
     <div>
-      total errors: {{ editorData.results.length }}
+      总共错误数: {{ editorData.results.length }}
     </div>
-    <div v-for="mistake of editorData.results">
-    <div>
-      
-      <span class="origin">
-        {{ mistake.origin }}
-      </span>
-      -
-      <span class="correct">
-        {{ mistake.correct }}
-      </span>
+    <div v-for="(mistake, index) in editorData.results">
+      <div class="item">
+        <span class="index">
+          {{ `${index+1}`.padStart(2, '0') }}
+        </span>
+        <span class="origin">
+          {{ ` ${mistake.origin}` }}
+        </span>
+        <span :class="!!mistake.correct ? 'correct' : 'delete'">
+          {{ !!mistake.correct ? ` ---> ${mistake.correct}` : '(删除)'}}
+        </span>
+        <span>
+          {{ [mistake.startPos, mistake.endPos] }}
+        </span>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -37,5 +41,25 @@ const editorData = editorStore();
   display: flex;
   flex-direction: column;
   overflow: auto;
+  background-color: lightgray;
+  .item {
+    background-color: white;
+    padding: 12px 24px;
+    margin: 12px;
+    background-color: white;
+    .index {
+      font-size: 18px;
+    }
+
+    .origin {
+      color: red;
+    }
+    .correct {
+      font-weight: bold;
+    }
+    .delete {
+      color: red;
+    }
+  }
 }
 </style>

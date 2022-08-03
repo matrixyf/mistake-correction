@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="action">
-        <el-button @click="audit">Audit Now</el-button>
-        <el-button @click="clear">Clear</el-button>
+        <el-button @click="audit">审核</el-button>
+        <el-button @click="clear">清空</el-button>
       </div>
     </div>
   </div>

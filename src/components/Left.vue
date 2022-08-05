@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="action">
-        <el-button @click="audit" class="audit" type="primary" style="width:100px">审核</el-button>
+        <el-button @click="audit" class="audit" type="primary" style="width:100px" v-loading.fullscreen.lock="loading">审核</el-button>
         <el-button @click="clear" class="clear" style="width:100px">清空</el-button>
       </div>
     </div>
@@ -27,7 +27,7 @@ import { editorStore } from '../stores/EditorStore';
 import { storeToRefs } from "pinia";
 
 const editorData = editorStore();
-const { source, results } = storeToRefs(editorData);
+const { source, results, loading } = storeToRefs(editorData);
 
 const divRef = ref();
 

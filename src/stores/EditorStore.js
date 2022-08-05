@@ -10,6 +10,7 @@ export const editorStore = defineStore("editorStore", {
     return {
       source: '',
       results: [],
+      loading: false,
     }
   },
   actions: {
@@ -21,6 +22,7 @@ export const editorStore = defineStore("editorStore", {
       this.source = text;
     },
     audit() {
+      this.loading = true;
       fetch('https://text-correction-server.vercel.app/api/check', {
         method: 'POST',
         headers: {
@@ -35,9 +37,11 @@ export const editorStore = defineStore("editorStore", {
         console.log(`data = `, data);
         const results = handleResulst(data);
         this.results = results;
+        this.loading = false;
       })
        .catch(error => {
         alert(error);
+        this.loading = false;
       });
     }
   },

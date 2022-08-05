@@ -68,7 +68,6 @@ watch(results, () => {
 <style lang="scss" scoped>
 .container {
   display: flex;
-  box-sizing: content-box;
   flex-direction: column;
   flex: 1;
   .source {

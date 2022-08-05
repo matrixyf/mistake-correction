@@ -36,7 +36,6 @@ const editorData = editorStore();
 <style lang="scss" scoped>
 .container {
   color: black;
-  padding: 24px;
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -46,6 +45,7 @@ const editorData = editorStore();
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 24px;
     margin-bottom: 20px;
     .summary {
       background-color: rgb(255, 230, 226);

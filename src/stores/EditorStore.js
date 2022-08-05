@@ -3,13 +3,14 @@
  * @Date: 2022-07-29 15:21:30
  * @Description: 
  */
-import { defineStore, storeToRefs } from "pinia";
+import { defineStore } from "pinia";
 
 export const editorStore = defineStore("editorStore", {
   state: () => {
     return {
       source: '',
       results: [],
+      loading: false,
     }
   },
   actions: {
@@ -21,6 +22,7 @@ export const editorStore = defineStore("editorStore", {
       this.source = text;
     },
     audit() {
+      this.loading = true;
       fetch('https://text-correction-server.vercel.app/api/check', {
         method: 'POST',
         headers: {
@@ -35,9 +37,11 @@ export const editorStore = defineStore("editorStore", {
         console.log(`data = `, data);
         const results = handleResulst(data);
         this.results = results;
+        this.loading = false;
       })
        .catch(error => {
         alert(error);
+        this.loading = false;
       });
     }
   },
@@ -76,7 +80,7 @@ function handleResulst(data) {
   const mappedArray = resultsArray.map((item, index) => {
     return {
       startPos: item[0],
-      endPos: item[0] + origin.length,
+      endPos: item[0] + item[1].length,
       origin: item[1],
       correct: item[2],
     }

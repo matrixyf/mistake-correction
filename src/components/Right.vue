@@ -19,9 +19,6 @@
         <span :class="!!mistake.correct ? 'correct' : 'delete'">
           {{ !!mistake.correct ? ` ---> ${mistake.correct}` : '(删除)'}}
         </span>
-        <span>
-          {{ [mistake.startPos, mistake.endPos] }}
-        </span>
       </div>
     </div>
   </div>

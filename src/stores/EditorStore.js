@@ -3,7 +3,7 @@
  * @Date: 2022-07-29 15:21:30
  * @Description: 
  */
-import { defineStore, storeToRefs } from "pinia";
+import { defineStore } from "pinia";
 
 export const editorStore = defineStore("editorStore", {
   state: () => {
@@ -76,7 +76,7 @@ function handleResulst(data) {
   const mappedArray = resultsArray.map((item, index) => {
     return {
       startPos: item[0],
-      endPos: item[0] + origin.length,
+      endPos: item[0] + item[1].length,
       origin: item[1],
       correct: item[2],
     }

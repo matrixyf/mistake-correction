@@ -5,8 +5,7 @@
 -->
 <template>
   <div class="container">
-    <div class="source">
-      <el-input type="textarea" input-style="height: 100%" resize="none" v-model="editorData.source"/>
+    <div class="source" contenteditable="true" @input="input" ref="divRef" >
     </div>
     <div class="bottom">
       <div>
@@ -23,10 +22,14 @@
 </template>
 
 <script setup>
-import { ref, reactive, } from 'vue';
+import { ref, reactive, watch } from 'vue';
 import { editorStore } from '../stores/EditorStore';
+import { storeToRefs } from "pinia";
 
-let editorData = editorStore();
+const editorData = editorStore();
+const { source, results } = storeToRefs(editorData);
+
+const divRef = ref();
 
 function audit() {
   editorData.audit();
@@ -35,6 +38,29 @@ function audit() {
 function clear() {
   editorData.clear();
 }
+
+function input(e) {
+  editorData.setSource(e.target.innerText);
+}
+
+function assembleDecoredSource() {
+  const sourceValue = source.value;
+  const resultsValue = results.value;
+  let cuurentIndex = 0;
+  let arr = [];
+  for (let i=0;i<resultsValue.length;i++) {
+    const { startPos, endPos } = resultsValue[i]; 
+    arr.push(sourceValue.substring(cuurentIndex, startPos));
+    arr.push(`<span style="color: red;">${sourceValue.substring(startPos, endPos)}</span>`);
+    cuurentIndex = endPos;
+  }
+  arr.push(sourceValue.substring(cuurentIndex));
+  return arr.join("");
+}
+
+watch(results, () => {
+  divRef.value.innerHTML = assembleDecoredSource();
+})
 
 
 </script>

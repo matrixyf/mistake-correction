@@ -34,7 +34,6 @@ export const editorStore = defineStore("editorStore", {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(`data = `, data);
         const results = handleResulst(data);
         this.results = results;
         this.loading = false;

@@ -75,6 +75,7 @@ watch(results, () => {
     margin: 24px;
     padding: 24px;
     font-size: 16px;
+    white-space: pre-wrap;
     &:focus-visible {
       outline: none;
     }

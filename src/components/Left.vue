@@ -7,15 +7,17 @@
   <div class="container">
     <div class="source" contenteditable="true" @input="input" ref="divRef" >
     </div>
-    <div class="bottom">
-      <div>
-        <div v-show="!!editorData.count" class="count">
-          {{ editorData.count }}
+    <div class="bottomWrapper">
+      <div class="bottom">
+        <div>
+          <div v-show="!!editorData.count" class="count">
+            {{ editorData.count }}
+          </div>
         </div>
-      </div>
-      <div class="action">
-        <el-button @click="audit" class="audit" type="primary" style="width:100px" v-loading.fullscreen.lock="loading">审核</el-button>
-        <el-button @click="clear" class="clear" style="width:100px">清空</el-button>
+        <div class="action">
+          <el-button @click="audit" class="audit" type="primary" style="width:100px" v-loading.fullscreen.lock="loading">审核</el-button>
+          <el-button @click="clear" class="clear" style="width:100px">清空</el-button>
+        </div>
       </div>
     </div>
   </div>
@@ -70,29 +72,35 @@ watch(results, () => {
   display: flex;
   flex-direction: column;
   flex: 1;
+  background-color: rgb(245, 246, 250);
+  box-sizing: border-box;
+  padding: 24px;
   .source {
     flex: 1;
-    margin: 24px;
     padding: 24px;
     font-size: 16px;
     white-space: pre-wrap;
+    background-color: white;
     &:focus-visible {
       outline: none;
     }
   }
-  .bottom {
-    height: 60px;
-    box-sizing: content-box;
-    margin: 0 24px 60px;
-    padding: 0px 24px;
-    box-shadow: 3px 3px 10px #444;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    .count {
-      color: #444;
-      font-size: 16px;
+  .bottomWrapper {
+    background-color: white;
+    padding: 24px;
+    .bottom {
+      height: 60px;
+      box-sizing: content-box;
+      padding: 0px 24px;
+      box-shadow: 3px 3px 10px #444;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      .count {
+        color: #444;
+        font-size: 16px;
+      }
     }
   }
 }

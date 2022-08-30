@@ -23,7 +23,7 @@ export const editorStore = defineStore("editorStore", {
     },
     audit() {
       this.loading = true;
-      fetch('https://text-correction-server.vercel.app/api/check', {
+      fetch('https://text-correction-server.top/api/check', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -1,0 +1,9 @@
+version: '3'
+services:
+  text-correction-web:
+    build: 
+      context: .
+      dockerfile: nginx.Dockerfile
+    image: text-correction-web
+    ports:
+      - 80:80

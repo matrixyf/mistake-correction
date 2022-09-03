@@ -23,7 +23,7 @@ export const editorStore = defineStore("editorStore", {
     },
     audit() {
       this.loading = true;
-      fetch('http://api.text-correction-server.top/check', {
+      fetch('http://47.95.22.128:8001/check', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

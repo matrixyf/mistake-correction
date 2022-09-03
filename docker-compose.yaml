@@ -1,9 +1,16 @@
 version: '3'
 services:
+  reverse-proxy-nginx:
+    build: 
+      context: .
+      dockerfile: reverse-proxy-nginx.Dockerfile
+    image: reverse-proxy-nginx
+    ports:
+      - 80:80
   text-correction-web:
     build: 
       context: .
-      dockerfile: nginx.Dockerfile
+      dockerfile: web-nginx.Dockerfile
     image: text-correction-web
     ports:
-      - 80:80
+      - 8000:8000

@@ -5,19 +5,24 @@
 -->
 <template>
   <div class="container">
-    <div class="left">
+    <main class="main">
+      <div class="left">
       <Left />
-    </div>
-    <div class="right">
-      <Right />
-    </div>
+      </div>
+      <div class="right">
+        <Right />
+      </div>
+    </main>
+    <footer class="footer">
+      <Footer />
+    </footer>
   </div>
 </template>
 
 <script setup>
 import Left from './Left.vue';
 import Right from './Right.vue';
-
+import Footer from './Footer.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -25,19 +30,30 @@ import Right from './Right.vue';
   display: flex;
   width: 100%;
   height: 100%;
-  .left {
-    flex: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .right {
+  flex-direction: column;
+  
+  .main {
     flex: 1;
-    height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: fow;
+    .left {
+      flex: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .right {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .footer {
+    height: 50px;
   }
 }
 </style>

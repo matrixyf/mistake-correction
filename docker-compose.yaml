@@ -8,6 +8,7 @@ services:
     container_name: reverse-proxy-nginx
     ports:
       - 80:80
+      - 443:443
     volumes:
       - /Users/Shared/cert/text-correction/api:/etc/cert
   # text-correction-web:

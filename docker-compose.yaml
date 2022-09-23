@@ -5,12 +5,16 @@ services:
       context: .
       dockerfile: reverse-proxy-nginx.Dockerfile
     image: reverse-proxy-nginx
+    container_name: reverse-proxy-nginx
     ports:
       - 80:80
-  text-correction-web:
-    build: 
-      context: .
-      dockerfile: web-nginx.Dockerfile
-    image: text-correction-web
-    ports:
-      - 8000:8000
+    volumes:
+      - /Users/Shared/cert/text-correction/api:/etc/cert
+  # text-correction-web:
+  #   build: 
+  #     context: .
+  #     dockerfile: web-nginx.Dockerfile
+  #   image: text-correction-web
+  #   container_name: 
+  #   ports:
+  #     - 8000:8000

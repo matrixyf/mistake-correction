@@ -11,11 +11,11 @@ services:
       - 443:443
     volumes:
       - /Users/Shared/cert/text-correction/api:/etc/cert
-  # text-correction-web:
-  #   build: 
-  #     context: .
-  #     dockerfile: web-nginx.Dockerfile
-  #   image: text-correction-web
-  #   container_name: 
-  #   ports:
-  #     - 8000:8000
+  text-correction-web:
+    build: 
+      context: .
+      dockerfile: web-nginx.Dockerfile
+    image: text-correction-web
+    container_name: text-correction-web
+    ports:
+      - 8000:8000

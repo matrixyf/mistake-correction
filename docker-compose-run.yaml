@@ -1,0 +1,20 @@
+version: '3'
+services:
+  reverse-proxy-nginx:
+    image: registry.cn-beijing.aliyuncs.com/matrixyf/reverse-proxy-nginx:1.0.3
+    container_name: reverse-proxy-nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /Users/Shared/cert/text-correction/api:/etc/cert
+  text-correction-web:
+    image: registry.cn-beijing.aliyuncs.com/matrixyf/text-correction-web:1.0.2
+    container_name: text-correction-web
+    ports:
+      - 8000:8000
+  text-correction-server:
+    image: registry.cn-beijing.aliyuncs.com/matrixyf/text-correction-server:1.0.2
+    container_name: text-correction-server
+    ports:
+      - 8001:8001
